@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Donskaya
+      changes:
+        - tagDatabase:
+            tag: 2.0
+        - createTable:
+            tableName: bid
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: bidder_name
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: bid_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lot_id
+                  type: integer
+                  constraints:
+                    foreignKeyName: lot_id
+                    referencedTableName: lot
+                    referencedColumnName: id
