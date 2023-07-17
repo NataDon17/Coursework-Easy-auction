@@ -23,19 +23,14 @@ public class BidServiceImpl implements BidService {
 
     @Override
     public BidDTO getFirstBidder(Integer id) throws IOException {
-        Lot lot = lotRepository.findById(id).orElseThrow(IOException::new);
-        return BidDTO.fromBid(bidRepository.findAll().stream()
-                .filter(bid -> bid.getLot().getId().equals(lot.getId()))
+        return BidDTO.fromBid(bidRepository.findAllBidByLot(id).stream()
                 .min(Comparator.comparing(Bid::getBidDate))
                 .orElse(new Bid("не найден")));
     }
 
     @Override
     public BidDTO getMostFrequentBidder(Integer id) throws IOException {
-        Lot lot = lotRepository.findById(id).orElseThrow(IOException::new);
-        return BidDTO.fromBid(bidRepository.findAll().stream()
-                .filter(bid -> bid.getLot().getId().equals(lot.getId()))
-                .sorted(Comparator.comparing(Bid::getBidderName))
+        return BidDTO.fromBid(bidRepository.findAllBidByLot(id).stream()
                 .max(Comparator.comparing(Bid::getBidDate))
                 .orElse(new Bid("не найден")));
     }

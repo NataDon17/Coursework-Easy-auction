@@ -31,6 +31,12 @@ public class Bid {
         this.bidderName = bidderName;
     }
 
+    public Bid(String bidderName, Date bidDate, Lot lot) {
+        this.bidderName = bidderName;
+        this.bidDate = bidDate;
+        this.lot = lot;
+    }
+
     @Override
     public String toString() {
         return "Bid{" +

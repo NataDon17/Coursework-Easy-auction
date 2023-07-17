@@ -31,7 +31,6 @@ public class AuctionController {
     @PostMapping("/")
     public void createLot(@RequestBody LotCreate lotCreate) {
         logger.debug("Create lot {}", lotCreate);
-        logger.info("Was invoked method for create lot " + lotCreate);
         lotService.createLot(lotCreate);
     }
 
@@ -56,16 +55,12 @@ public class AuctionController {
     @PostMapping("/{id}/start")
     public ResponseEntity<?> startLot(@PathVariable Integer id) throws IOException {
         logger.debug("Started lot {}", id);
-        logger.info("Was invoked method start bidding on a lot {}", id);
-        logger.error("Lot {} not found", id);
         return lotService.startLot(id);
     }
 
     @PostMapping("/{id}/stop")
     public ResponseEntity<?> stopLot(@PathVariable Integer id) throws IOException {
         logger.debug("Stopped lot {}", id);
-        logger.info("Was invoked method stop bidding on a lot {}", id);
-        logger.error("Lot {} not found", id);
         return lotService.stopLot(id);
     }
 
@@ -73,9 +68,6 @@ public class AuctionController {
     public ResponseEntity<?> createBid(@PathVariable Integer id,
                                        @RequestBody String name) throws IOException {
         logger.debug("Create a bid for a lot {}", id);
-        logger.info("Was invoked method create a bid for a lot {}", id);
-        logger.error("Lot {} in the wrong status", id);
-        logger.error("Lot {} not found", id);
         return bidService.createBid(id, name);
     }
 
@@ -83,14 +75,11 @@ public class AuctionController {
     public Collection<LotDTO> findLots(@RequestParam("page") Integer page,
                                        @ModelAttribute("status") LotStatus status) {
         logger.debug("Create list of lots in the status {} on the page {} ", status, page);
-        logger.info("Was invoked method create list of lots in the status {} on the page {} ", status, page);
         return lotService.findLots(page, status);
     }
 
     @GetMapping("/export")
     public void exportToCSV(HttpServletResponse response) throws IOException {
-        logger.debug("Create file csv");
-        logger.info("Was invoked method get file csv");
         logger.error("Unknown server error");
         response.setContentType("text/csv");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
