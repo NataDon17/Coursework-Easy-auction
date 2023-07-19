@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Donskaya
+      changes:
+        - tagDatabase:
+            tag: 1.0
+        - createTable:
+            tableName: lot
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: status
+                  type: varchar(7)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar
+                  constraints:
+                    minLength: 3
+                    maxLength: 64
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar
+                  constraints:
+                    minLength: 1
+                    maxLength: 4096
+                    nullable: false
+              - column:
+                  name: start_price
+                  type: int
+                  constraints:
+                    minimum: 1
+                    nullable: false
+              - column:
+                  name: bid_price
+                  type: int
+                  constraints:
+                    minimum: 1
+                    nullable: false
+              - column:
+                  name: current_price
+                  type: int
+                  constraints:
+                    nullable: false
