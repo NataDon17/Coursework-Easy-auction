@@ -18,7 +18,7 @@
 ## Используемые технологии и библиотеки:
 
 - Java
-- Sring Boot
+- Spring Boot
 - Liquibase
 - Lombok
 - База данных PostgreSQL
