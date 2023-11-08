@@ -17,8 +17,4 @@
 
 ## Используемые технологии и библиотеки:
 
-- Java
-- Spring Boot
-- Liquibase
-- Lombok
-- База данных PostgreSQL
+Язык и окружение: Java 17, Spring Boot/Web/Admin, Hibernate, PostgreSQL, Liquibase, Lombok.
